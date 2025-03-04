@@ -20,6 +20,7 @@ class Game
 		Room outside = new Room("outside the main entrance of the university");
 		Room theatre = new Room("in a lecture theatre");
 		Room pub = new Room("in the campus pub");
+		Room basement = new Room("in the basement of the pub");
 		Room lab = new Room("in a computing lab");
 		Room office = new Room("in the computing admin office");
 
@@ -31,11 +32,14 @@ class Game
 		theatre.AddExit("west", outside);
 
 		pub.AddExit("east", outside);
+		pub.AddExit("down", basement);
 
 		lab.AddExit("north", outside);
 		lab.AddExit("east", office);
 
 		office.AddExit("west", lab);
+
+		basement.AddExit("up", pub);
 
 		// Create your Items here
 		// ...
@@ -99,6 +103,9 @@ class Game
 			case "quit":
 				wantToQuit = true;
 				break;
+			case "look":
+			 Look();
+			 break;
 		}
 
 		return wantToQuit;
